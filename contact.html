@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Contact Champion's Locker for support, team orders, and inquiries." />
+  <title>Contact Us — Champion's Locker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Champion's Locker</a>
+      <button id="navToggle" class="nav-toggle" aria-label="Toggle menu">☰</button>
+      <nav class="nav" id="siteNav">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="cartToggle" class="cart-btn" aria-label="Open cart">Cart (<span id="cartCount">0</span>)</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Contact Us</h1>
+    <p class="lead">Have questions? We're here to help. Fill out the form below or reach out directly.</p>
+
+    <div class="contact-grid">
+      <section class="contact-form">
+        <h3>Send us a message</h3>
+        <form id="contactForm">
+          <label>
+            Name
+            <input type="text" name="name" required>
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" required>
+          </label>
+          <label>
+            Subject
+            <input type="text" name="subject" required>
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary">Send message</button>
+        </form>
+      </section>
+
+      <aside class="contact-info">
+        <h3>Get in touch</h3>
+        <p><strong>Email:</strong> <a href="mailto:lockerchampions@gmail.com">lockerchampions@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a id="phoneLink" href=""></a></p>
+        <p><strong>Hours:</strong> Monday–Friday, 9am–6pm EST</p>
+
+        <h4>Team Orders</h4>
+        <p>Looking to customize gear for your team? We offer bulk discounts and special arrangements. <a href="mailto:lockerchampions@gmail.com">Email our team coordinator</a>.</p>
+
+        <h4>Returns &amp; Support</h4>
+        <p>If you have an issue with your order, <a href="mailto:lockerchampions@gmail.com">contact support</a> within 14 days of delivery for assistance.</p>
+      </aside>
+    </div>
+  </main>
+
+  <aside id="cart" class="cart" aria-hidden="true">
+    <div class="cart-head">
+      <h3>Your cart</h3>
+      <button id="closeCart" aria-label="Close cart">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="total">Total: $<span id="cartTotal">0.00</span></div>
+      <button id="checkout" class="btn btn-primary">Checkout</button>
+    </div>
+  </aside>
+
+  <footer class="site-footer container">
+    <p>© <span id="year"></span> Champion's Locker — Personalized gear made easy.</p>
+  </footer>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/main.js" defer></script>
+
+  <script>
+    // PHONE NUMBER CONFIGURATION - Edit here to change phone number site-wide
+    const BUSINESS_PHONE = '+1 (555) 123-4567';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set phone number link
+      const phoneLink = document.getElementById('phoneLink');
+      if(phoneLink){
+        phoneLink.href = 'tel:' + BUSINESS_PHONE.replace(/\D/g, '');
+        phoneLink.textContent = BUSINESS_PHONE;
+      }
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const form = new FormData(e.target);
+      alert('Thank you for your message! We will get back to you soon at ' + form.get('email'));
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
